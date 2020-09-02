@@ -1,0 +1,59 @@
+gitpod /workspace/test/gogo $ ls
+gcc-10.2.0  gcc-10.2.0.tar.xz  gmp-6.2.0.tar.xz  mpc-1.1.0.tar.gz  mpfr-4.1.0.tar.xz
+gitpod /workspace/test/gogo $ rm gcc-10.2.0.tar.xz 
+gitpod /workspace/test/gogo $ ls
+gcc-10.2.0  gmp-6.2.0.tar.xz  mpc-1.1.0.tar.gz  mpfr-4.1.0.tar.xz
+gitpod /workspace/test/gogo $ ls
+gcc-10.2.0  gmp-6.2.0.tar.xz  mpc-1.1.0.tar.gz  mpfr-4.1.0.tar.xz
+gitpod /workspace/test/gogo $ cd ..
+gitpod /workspace/test $ git status
+On branch master
+Your branch is based on 'origin/master', but the upstream is gone.
+  (use "git branch --unset-upstream" to fixup)
+
+Changes not staged for commit:
+  (use "git add/rm <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        deleted:    gogo/gcc-10.2.0.tar.xz
+
+no changes added to commit (use "git add" and/or "git commit -a")
+gitpod /workspace/test $ git add .
+gitpod /workspace/test $ git commit -m "second commit"
+[master f7d3fac3f] second commit
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+ delete mode 100644 gogo/gcc-10.2.0.tar.xz
+gitpod /workspace/test $ git push -u origin master
+Enumerating objects: 105147, done.
+Counting objects: 100% (105147/105147), done.
+Delta compression using up to 16 threads
+Compressing objects: 100% (82013/82013), done.
+Writing objects: 100% (105147/105147), 600.77 MiB | 27.83 MiB/s, done.
+Total 105147 (delta 21093), reused 105143 (delta 21091), pack-reused 0
+remote: Resolving deltas: 100% (21093/21093), done.
+remote: warning: File gogo/gcc-10.2.0.tar.xz is 71.53 MB; this is larger than GitHub's recommended maximum file size of 50.00 MB
+remote: error: GH001: Large files detected. You may want to try Git Large File Storage - https://git-lfs.github.com.
+remote: error: Trace: 8264f2d1663a43c7a8bec11edb2ac0bf
+remote: error: See http://git.io/iEPt8g for more information.
+remote: error: File gogo/gcc-10.2.0/build/gcc/cc1 is 264.59 MB; this exceeds GitHub's file size limit of 100.00 MB
+remote: error: File gogo/gcc-10.2.0/build/gcc/cc1plus is 278.76 MB; this exceeds GitHub's file size limit of 100.00 MB
+remote: error: File gogo/gcc-10.2.0/build/gcc/lto-dump is 254.46 MB; this exceeds GitHub's file size limit of 100.00 MB
+remote: error: File gogo/gcc-10.2.0/build/gcc/lto1 is 254.52 MB; this exceeds GitHub's file size limit of 100.00 MB
+To https://github.com/newton851/gccbuildphase1-test1.git
+ ! [remote rejected]     master -> master (pre-receive hook declined)
+error: failed to push some refs to 'https://github.com/newton851/gccbuildphase1-test1.git'
+
+
+
+gitpod /workspace/test $ vim removed.txt
+gitpod /workspace/test $ vim removed.txt 
+gitpod /workspace/test $ git rm gogo/gcc-10.2.0/build/gcc/cc1
+rm 'gogo/gcc-10.2.0/build/gcc/cc1'
+gitpod /workspace/test $ git rm --cached gogo/gcc-10.2.0/build/gcc/cc1plus
+rm 'gogo/gcc-10.2.0/build/gcc/cc1plus'
+gitpod /workspace/test $ git rm --cached gogo/gcc-10.2.0/build/gcc/lto-dump
+rm 'gogo/gcc-10.2.0/build/gcc/lto-dump'
+gitpod /workspace/test $ git rm --cached gogo/gcc-10.2.0/build/gcc/lto1
+rm 'gogo/gcc-10.2.0/build/gcc/lto1'
+gitpod /workspace/test $ git rm --cached gogo/gcc-10.2.0.tar.xz
+fatal: pathspec 'gogo/gcc-10.2.0.tar.xz' did not match any files
+gitpod /workspace/test $ 
