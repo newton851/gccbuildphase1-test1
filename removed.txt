@@ -56,4 +56,124 @@ gitpod /workspace/test $ git rm --cached gogo/gcc-10.2.0/build/gcc/lto1
 rm 'gogo/gcc-10.2.0/build/gcc/lto1'
 gitpod /workspace/test $ git rm --cached gogo/gcc-10.2.0.tar.xz
 fatal: pathspec 'gogo/gcc-10.2.0.tar.xz' did not match any files
+gitpod /workspace/test $
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+gitpod /workspace/test $ du -sh gogo/gcc-10.2.0/build
+1.9G    gogo/gcc-10.2.0/build
+gitpod /workspace/test $ git filter-branch --tree-filter 'rm -rf gogo/gcc-10.2.0/build/gcc/cc1plus' HEAD
+WARNING: git-filter-branch has a glut of gotchas generating mangled history
+         rewrites.  Hit Ctrl-C before proceeding to abort, then use an
+         alternative filtering tool such as 'git filter-repo'
+         (https://github.com/newren/git-filter-repo/) instead.  See the
+         filter-branch manual page for more details; to squelch this warning,
+         set FILTER_BRANCH_SQUELCH_WARNING=1.
+Proceeding with filter-branch...
+
+Rewrite 1c2c3d345aa380fc7be525882e289aebbcd22c83 (3/3) (42 seconds passed, remaining 0 predicted)     
+Ref 'refs/heads/master' was rewritten
+gitpod /workspace/test $ git push -f origin master
+Enumerating objects: 105153, done.
+Counting objects: 100% (105153/105153), done.
+Delta compression using up to 16 threads
+Compressing objects: 100% (82019/82019), done.
+Writing objects: 100% (105153/105153), 502.77 MiB | 27.58 MiB/s, done.
+Total 105153 (delta 21097), reused 105137 (delta 21091), pack-reused 0
+remote: Resolving deltas: 100% (21097/21097), done.
+remote: warning: File gogo/gcc-10.2.0.tar.xz is 71.53 MB; this is larger than GitHub's recommended maximum file size of 50.00 MB
+remote: error: GH001: Large files detected. You may want to try Git Large File Storage - https://git-lfs.github.com.
+remote: error: Trace: a486021a733762f4d810f5a8e3252d0b
+remote: error: See http://git.io/iEPt8g for more information.
+remote: error: File gogo/gcc-10.2.0/build/gcc/lto-dump is 254.46 MB; this exceeds GitHub's file size limit of 100.00 MB
+remote: error: File gogo/gcc-10.2.0/build/gcc/lto1 is 254.52 MB; this exceeds GitHub's file size limit of 100.00 MB
+remote: error: File gogo/gcc-10.2.0/build/gcc/cc1 is 264.59 MB; this exceeds GitHub's file size limit of 100.00 MB
+To https://github.com/newton851/gccbuildphase1-test1.git
+ ! [remote rejected]     master -> master (pre-receive hook declined)
+error: failed to push some refs to 'https://github.com/newton851/gccbuildphase1-test1.git'
+gitpod /workspace/test $ git filter-branch --tree-filter 'rm -rf gogo/gcc-10.2.0/build/gcc/lto-dump' HEAD
+WARNING: git-filter-branch has a glut of gotchas generating mangled history
+         rewrites.  Hit Ctrl-C before proceeding to abort, then use an
+         alternative filtering tool such as 'git filter-repo'
+         (https://github.com/newren/git-filter-repo/) instead.  See the
+         filter-branch manual page for more details; to squelch this warning,
+         set FILTER_BRANCH_SQUELCH_WARNING=1.
+Proceeding with filter-branch...
+
+Cannot create a new backup.
+A previous backup already exists in refs/original/
+Force overwriting the backup with -f
+gitpod /workspace/test $ git filter-branch -f --tree-filter 'rm -rf gogo/gcc-10.2.0/build/gcc/lto-dump' HEAD
+WARNING: git-filter-branch has a glut of gotchas generating mangled history
+         rewrites.  Hit Ctrl-C before proceeding to abort, then use an
+         alternative filtering tool such as 'git filter-repo'
+         (https://github.com/newren/git-filter-repo/) instead.  See the
+         filter-branch manual page for more details; to squelch this warning,
+         set FILTER_BRANCH_SQUELCH_WARNING=1.
+Proceeding with filter-branch...
+
+Rewrite eca2bc8f33fe9ee8aab3b64e37513267131a0708 (3/3) (38 seconds passed, remaining 0 predicted)     
+Ref 'refs/heads/master' was rewritten
+gitpod /workspace/test $ git filter-branch -f --tree-filter 'rm -rf gogo/gcc-10.2.0/build/gcc/lto1' HEAD
+WARNING: git-filter-branch has a glut of gotchas generating mangled history
+         rewrites.  Hit Ctrl-C before proceeding to abort, then use an
+         alternative filtering tool such as 'git filter-repo'
+         (https://github.com/newren/git-filter-repo/) instead.  See the
+         filter-branch manual page for more details; to squelch this warning,
+         set FILTER_BRANCH_SQUELCH_WARNING=1.
+Proceeding with filter-branch...
+
+Rewrite 084b8bf7f2a4f58ed84351ce0979ac929b3d01e2 (3/3) (37 seconds passed, remaining 0 predicted)     
+Ref 'refs/heads/master' was rewritten
+gitpod /workspace/test $ git filter-branch -f --tree-filter 'rm -rf File gogo/gcc-10.2.0/build/gcc/cc1' HEAD
+WARNING: git-filter-branch has a glut of gotchas generating mangled history
+         rewrites.  Hit Ctrl-C before proceeding to abort, then use an
+         alternative filtering tool such as 'git filter-repo'
+         (https://github.com/newren/git-filter-repo/) instead.  See the
+         filter-branch manual page for more details; to squelch this warning,
+         set FILTER_BRANCH_SQUELCH_WARNING=1.
+Proceeding with filter-branch...
+
+Rewrite 01129d159602a5fdcd085104e45464850c446b2d (3/3) (26 seconds passed, remaining 0 predicted)    
+Ref 'refs/heads/master' was rewritten
+gitpod /workspace/test $ git push -f origin master
+Enumerating objects: 105146, done.
+Counting objects: 100% (105146/105146), done.
+Delta compression using up to 16 threads
+Compressing objects: 100% (82012/82012), done.
+Writing objects: 100% (105146/105146), 233.92 MiB | 26.65 MiB/s, done.
+Total 105146 (delta 21094), reused 105134 (delta 21091), pack-reused 0
+remote: Resolving deltas: 100% (21094/21094), done.
+remote: warning: GH001: Large files detected. You may want to try Git Large File Storage - https://git-lfs.github.com.
+remote: warning: See http://git.io/iEPt8g for more information.
+remote: warning: File gogo/gcc-10.2.0.tar.xz is 71.53 MB; this is larger than GitHub's recommended maximum file size of 50.00 MB
+To https://github.com/newton851/gccbuildphase1-test1.git
+ * [new branch]          master -> master
 gitpod /workspace/test $ 
